@@ -1,0 +1,36 @@
+services:
+
+  # ── POSTGRESQL ─────────────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    container_name: asistencia_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER}"]
+      interval: 10s
+      retries: 5
+
+  # ── REDIS ──────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    container_name: asistencia_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redisdata:/data
+
+# ── VOLÚMENES ───────────────────────────────────────
+# Son carpetas especiales donde Docker guarda los datos
+# aunque el contenedor se detenga o elimine
+volumes:
+  pgdata:
+  redisdata:
