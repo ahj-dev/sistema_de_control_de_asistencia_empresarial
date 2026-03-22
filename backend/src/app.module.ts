@@ -4,12 +4,14 @@ import { AppService } from './app.service';
 import { PrismaModule } from './prisma/prisma.module';
 import { DepartamentosModule } from './modules/departamentos/departamentos.module';
 import { EmpleadosModule } from './modules/empleados/empleados.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
     PrismaModule,
     DepartamentosModule,
-    EmpleadosModule, // ← agregamos esto
+    EmpleadosModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

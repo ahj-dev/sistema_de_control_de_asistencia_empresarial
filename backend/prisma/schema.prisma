@@ -48,9 +48,30 @@ model Empleado {
   departamentoId String       @map("departamento_id")
   departamento   Departamento @relation("EmpleadoDepartamento", fields: [departamentoId], references: [id])
 
+  // Relación inversa con Usuario
+  usuario Usuario?
+
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
   @@index([departamentoId])
   @@map("empleados")
+
+}
+model Usuario {
+  id           String  @id @default(uuid())
+  email        String  @unique
+  passwordHash String  @map("password_hash")
+  rol          Rol     @default(EMPLEADO)
+  activo       Boolean @default(true)
+
+  // Relación opcional con Empleado
+  // Un Admin de TI puede tener usuario sin ser empleado
+  empleadoId String?   @unique @map("empleado_id")
+  empleado   Empleado? @relation(fields: [empleadoId], references: [id])
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("usuarios")
 }
