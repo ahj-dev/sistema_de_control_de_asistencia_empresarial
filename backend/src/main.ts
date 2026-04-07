@@ -6,14 +6,20 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  // Habilitar CORS — permite peticiones desde el frontend
+  app.enableCors({
+    origin: 'http://localhost:3000', // solo acepta peticiones de Next.js
+    methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  });
+
   app.setGlobalPrefix('api/v1');
 
-  // Activa la validación automática en TODOS los endpoints
   app.useGlobalPipes(
     new ValidationPipe({
-      whitelist: true, // elimina campos que no están en el DTO
-      forbidNonWhitelisted: true, // rechaza peticiones con campos extra
-      transform: true, // convierte los datos al tipo correcto
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      transform: true,
     }),
   );
 
