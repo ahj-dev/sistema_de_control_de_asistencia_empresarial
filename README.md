@@ -14,12 +14,12 @@ Proyecto full-stack
 ## 📋 Tabla de Contenidos
 
 - [Descripción del Proyecto](#-descripción-del-proyecto)
+- [Sprints e Historias de Usuario](#-sprints-e-historias-de-usuario)
 - [Stack Tecnológico](#-stack-tecnológico)
 - [Arquitectura](#-arquitectura)
 - [Modelo de Datos](#-modelo-de-datos)
 - [Casos de Uso](#-casos-de-uso)
 - [Plan de Releases](#-plan-de-releases)
-- [Sprints e Historias de Usuario](#-sprints-e-historias-de-usuario)
 - [Cronograma](#-cronograma)
 - [Definition of Done (DoD)](#-definition-of-done-dod)
 - [Instalación y Ejecución](#-instalación-y-ejecución)
@@ -63,7 +63,105 @@ El **Sistema de Control de Asistencia Empresarial** es una aplicación web full-
 - ✅ Notificaciones in-app y por email
 
 ---
+## 📌 Sprints e Historias de Usuario
 
+### Sprint 1 — Infraestructura y entidades base
+
+> 📅 **Mar 16 → Mar 29** · 🚫 Festivo: Mar 23 (San José)
+
+| # | Historia de Usuario | Tipo | Prioridad |
+|---|---|---|---|
+| HU-01 | Gestión de Empleados (CRUD completo con cargo y departamento) | `backend` `frontend` | Alta |
+| HU-02 | Gestión de Departamentos y asignación de jefe | `backend` `frontend` | Alta |
+| HU-03 | Autenticación y control de acceso por roles (JWT) | `backend` `seguridad` | Alta |
+
+**Entregables:**
+- Docker Compose con PostgreSQL, NestJS, Next.js y Redis
+- Prisma schema con entidades Empleado, Departamento, Cargo y Usuario
+- Migraciones ejecutadas y seed de datos iniciales
+- CRUD completo (Controller → Service → Repository) para las 3 entidades
+- Módulo de autenticación con JWT (login, refresh, logout)
+- Frontend: listados y formularios básicos con manejo de errores
+
+---
+
+### Sprint 2 — Asistencia y horarios
+
+> 📅 **Mar 30 → Abr 10** · 🚫 Festivos: Abr 2-3 (Semana Santa)
+
+| # | Historia de Usuario | Tipo | Prioridad |
+|---|---|---|---|
+| HU-04 | Registro de entrada y salida (check-in / check-out) | `backend` | Alta |
+| HU-05 | Detección automática de tardanzas por horario | `backend` | Alta |
+| HU-06 | Configuración de horarios laborales y días festivos | `backend` `frontend` | Media |
+
+**Entregables:**
+- Endpoint `POST /asistencia/entrada` con cálculo automático de tardanza
+- Endpoint `POST /asistencia/salida` con cálculo de horas trabajadas
+- Cron job de marcación de ausentes (23:59 lunes-viernes)
+- CRUD de HorarioLaboral y DiaFestivo
+- Lógica de tolerancia configurable por horario
+
+---
+
+### Sprint 3 — Justificaciones, Horas Extra y Frontend base
+
+> 📅 **Abr 13 → Abr 17** · 📝 Cierre Segundo Corte: Abr 17
+
+| # | Historia de Usuario | Tipo | Prioridad |
+|---|---|---|---|
+| HU-07 | Registro y gestión de justificaciones de ausencia | `backend` | Alta |
+| HU-08 | Flujo de aprobación de justificaciones (jefe/RRHH) | `backend` | Alta |
+| HU-09 | Solicitud y aprobación de horas extra | `backend` | Alta |
+| HU-10 | Sistema de notificaciones in-app | `backend` | Media |
+| HU-11 | Common Module: Filters, Interceptors, Pipes globales | `cross-cutting` | Alta |
+
+**Entregables:**
+- Módulo de Justificaciones con subida de archivos (Multer)
+- Flujo de aprobación con notificación automática
+- Módulo de Horas Extra con generación automática al registrar salida
+- Common Module global (filtros, interceptores, transformación de respuestas)
+- Frontend: estructura Next.js, listados y formularios de todas las entidades
+
+---
+
+### Sprint 4 — Frontend avanzado e integración
+
+> 📅 **Abr 20 → May 8** · 🚫 Festivo: May 1 (Día del Trabajo)
+
+| # | Historia de Usuario | Tipo | Prioridad |
+|---|---|---|---|
+| HU-12 | Frontend: Flujo de fichaje (entrada/salida) y asistencia diaria | `frontend` | Alta |
+| HU-13 | Frontend: Dashboard RRHH con resumen en tiempo real | `frontend` | Alta |
+
+**Entregables:**
+- Vista de fichaje con feedback visual (tardanza, tiempo trabajado)
+- Tablas de aprobación de justificaciones y horas extra para jefes/RRHH
+- Dashboard con estadísticas: empleados presentes, tardanzas, ausencias del día
+- Layout general con sidebar y navegación por roles
+- Diseño responsivo (desktop + tablet)
+- Componentes de feedback (toast/alert de éxito/error)
+
+---
+
+### Sprint 5 — Reportes, cierres y despliegue
+
+> 📅 **May 11 → May 22** · 🚫 Festivo: May 18 (Ascensión) · 📝 Cierre Tercer Corte: May 22
+
+| # | Historia de Usuario | Tipo | Prioridad |
+|---|---|---|---|
+| HU-14 | Reporte mensual por empleado (PDF exportable) | `backend` `frontend` `reporte` | Alta |
+| HU-15 | Reporte de asistencia por departamento | `backend` `frontend` `reporte` | Alta |
+| HU-16 | Resumen de horas extra para nómina (Excel exportable) | `backend` `frontend` `reporte` | Media |
+
+**Entregables:**
+- Reporte PDF individual: horas trabajadas, tardanzas, ausencias, HE aprobadas
+- Reporte de departamento con estadísticas consolidadas
+- Exportación Excel con datos para procesamiento de nómina
+- Pruebas de integración E2E
+- Docker Compose validación final y documentación de despliegue
+
+---
 ## 🛠 Stack Tecnológico
 
 | Capa | Tecnología | Propósito |
@@ -246,106 +344,6 @@ TipoJustificacion → ENFERMEDAD | CITA_MEDICA | CALAMIDAD_DOMESTICA | PERMISO_P
 |---|---|---|---|
 | Sprint 4 | Abr 20 → May 8 | HU-12, HU-13 | Frontend avanzado, flujos de aprobación, dashboard RRHH |
 | Sprint 5 | May 11 → May 22 | HU-14, HU-15, HU-16 | Reportes PDF/Excel, promedio horas, pruebas E2E |
-
----
-
-## 📌 Sprints e Historias de Usuario
-
-### Sprint 1 — Infraestructura y entidades base
-
-> 📅 **Mar 16 → Mar 29** · 🚫 Festivo: Mar 23 (San José)
-
-| # | Historia de Usuario | Tipo | Prioridad |
-|---|---|---|---|
-| HU-01 | Gestión de Empleados (CRUD completo con cargo y departamento) | `backend` `frontend` | Alta |
-| HU-02 | Gestión de Departamentos y asignación de jefe | `backend` `frontend` | Alta |
-| HU-03 | Autenticación y control de acceso por roles (JWT) | `backend` `seguridad` | Alta |
-
-**Entregables:**
-- Docker Compose con PostgreSQL, NestJS, Next.js y Redis
-- Prisma schema con entidades Empleado, Departamento, Cargo y Usuario
-- Migraciones ejecutadas y seed de datos iniciales
-- CRUD completo (Controller → Service → Repository) para las 3 entidades
-- Módulo de autenticación con JWT (login, refresh, logout)
-- Frontend: listados y formularios básicos con manejo de errores
-
----
-
-### Sprint 2 — Asistencia y horarios
-
-> 📅 **Mar 30 → Abr 10** · 🚫 Festivos: Abr 2-3 (Semana Santa)
-
-| # | Historia de Usuario | Tipo | Prioridad |
-|---|---|---|---|
-| HU-04 | Registro de entrada y salida (check-in / check-out) | `backend` | Alta |
-| HU-05 | Detección automática de tardanzas por horario | `backend` | Alta |
-| HU-06 | Configuración de horarios laborales y días festivos | `backend` `frontend` | Media |
-
-**Entregables:**
-- Endpoint `POST /asistencia/entrada` con cálculo automático de tardanza
-- Endpoint `POST /asistencia/salida` con cálculo de horas trabajadas
-- Cron job de marcación de ausentes (23:59 lunes-viernes)
-- CRUD de HorarioLaboral y DiaFestivo
-- Lógica de tolerancia configurable por horario
-
----
-
-### Sprint 3 — Justificaciones, Horas Extra y Frontend base
-
-> 📅 **Abr 13 → Abr 17** · 📝 Cierre Segundo Corte: Abr 17
-
-| # | Historia de Usuario | Tipo | Prioridad |
-|---|---|---|---|
-| HU-07 | Registro y gestión de justificaciones de ausencia | `backend` | Alta |
-| HU-08 | Flujo de aprobación de justificaciones (jefe/RRHH) | `backend` | Alta |
-| HU-09 | Solicitud y aprobación de horas extra | `backend` | Alta |
-| HU-10 | Sistema de notificaciones in-app | `backend` | Media |
-| HU-11 | Common Module: Filters, Interceptors, Pipes globales | `cross-cutting` | Alta |
-
-**Entregables:**
-- Módulo de Justificaciones con subida de archivos (Multer)
-- Flujo de aprobación con notificación automática
-- Módulo de Horas Extra con generación automática al registrar salida
-- Common Module global (filtros, interceptores, transformación de respuestas)
-- Frontend: estructura Next.js, listados y formularios de todas las entidades
-
----
-
-### Sprint 4 — Frontend avanzado e integración
-
-> 📅 **Abr 20 → May 8** · 🚫 Festivo: May 1 (Día del Trabajo)
-
-| # | Historia de Usuario | Tipo | Prioridad |
-|---|---|---|---|
-| HU-12 | Frontend: Flujo de fichaje (entrada/salida) y asistencia diaria | `frontend` | Alta |
-| HU-13 | Frontend: Dashboard RRHH con resumen en tiempo real | `frontend` | Alta |
-
-**Entregables:**
-- Vista de fichaje con feedback visual (tardanza, tiempo trabajado)
-- Tablas de aprobación de justificaciones y horas extra para jefes/RRHH
-- Dashboard con estadísticas: empleados presentes, tardanzas, ausencias del día
-- Layout general con sidebar y navegación por roles
-- Diseño responsivo (desktop + tablet)
-- Componentes de feedback (toast/alert de éxito/error)
-
----
-
-### Sprint 5 — Reportes, cierres y despliegue
-
-> 📅 **May 11 → May 22** · 🚫 Festivo: May 18 (Ascensión) · 📝 Cierre Tercer Corte: May 22
-
-| # | Historia de Usuario | Tipo | Prioridad |
-|---|---|---|---|
-| HU-14 | Reporte mensual por empleado (PDF exportable) | `backend` `frontend` `reporte` | Alta |
-| HU-15 | Reporte de asistencia por departamento | `backend` `frontend` `reporte` | Alta |
-| HU-16 | Resumen de horas extra para nómina (Excel exportable) | `backend` `frontend` `reporte` | Media |
-
-**Entregables:**
-- Reporte PDF individual: horas trabajadas, tardanzas, ausencias, HE aprobadas
-- Reporte de departamento con estadísticas consolidadas
-- Exportación Excel con datos para procesamiento de nómina
-- Pruebas de integración E2E
-- Docker Compose validación final y documentación de despliegue
 
 ---
 
