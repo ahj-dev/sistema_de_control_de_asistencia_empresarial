@@ -7,9 +7,9 @@ import {
   Body,
   Param,
 } from '@nestjs/common';
-import { DepartamentosService } from './departamentos.service';
-import { CreateDepartamentoDto } from './dto/create-departamento.dto';
-import { UpdateDepartamentoDto } from './dto/update-departamento.dto';
+import { DepartamentosService } from '../service/departamentos.service';
+import { CreateDepartamentoDto } from '../dto/create-departamento.dto';
+import { UpdateDepartamentoDto } from '../dto/update-departamento.dto';
 
 // Todos los endpoints de este controller empezarán con:
 // /api/v1/departamentos

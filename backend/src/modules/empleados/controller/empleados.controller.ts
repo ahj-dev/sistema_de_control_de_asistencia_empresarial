@@ -7,9 +7,9 @@ import {
   Body,
   Param,
 } from '@nestjs/common';
-import { EmpleadosService } from './empleados.service';
-import { CreateEmpleadoDto } from './dto/create-empleado.dto';
-import { UpdateEmpleadoDto } from './dto/update-empleado.dto';
+import { EmpleadosService } from '../service/empleados.service';
+import { CreateEmpleadoDto } from '../dto/create-empleado.dto';
+import { UpdateEmpleadoDto } from '../dto/update-empleado.dto';
 
 @Controller('empleados')
 export class EmpleadosController {
