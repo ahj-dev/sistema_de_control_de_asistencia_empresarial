@@ -12,12 +12,12 @@ export class CreateEmpleadoDto {
   @IsString()
   @IsNotEmpty()
   @MinLength(2)
-  nombres: string;
+  nombres!: string;
 
   @IsString()
   @IsNotEmpty()
   @MinLength(2)
-  apellidos: string;
+  apellidos!: string;
 
   // Matches valida que sea solo números con regex
   @IsString()
@@ -25,7 +25,7 @@ export class CreateEmpleadoDto {
   @Matches(/^[0-9]{6,12}$/, {
     message: 'La cédula debe tener entre 6 y 12 dígitos numéricos',
   })
-  cedula: string;
+  cedula!: string;
 
   @IsString()
   @IsOptional()
@@ -39,10 +39,10 @@ export class CreateEmpleadoDto {
   // Formato esperado: "2024-01-10"
   @IsDateString()
   @IsNotEmpty()
-  fechaIngreso: string;
+  fechaIngreso!: string;
 
   // UUID del departamento al que pertenece
   @IsUUID()
   @IsNotEmpty()
-  departamentoId: string;
+  departamentoId!: string;
 }

@@ -1,3 +1,8 @@
+// Este es el punto de entrada de la aplicación NestJS. Aquí se configura y arranca el servidor.
+//--------------------------------------------------------------
+// Importamos las dependencias necesarias para arrancar el servidor NestJS. 
+// También importamos el módulo raíz de la aplicación, AppModule, que contiene toda la lógica de la aplicación.
+//--------------------------------------------
 //Arranca el servidor
 import 'dotenv/config';
 import { NestFactory } from '@nestjs/core';
@@ -6,7 +11,7 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
+  
   // Habilitar CORS — permite peticiones desde el frontend
   app.enableCors({
     origin: 'http://localhost:3000', // solo acepta peticiones de Next.js

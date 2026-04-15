@@ -1,4 +1,5 @@
 //recibe la peticion del usuario, contiene la logica de negocio y se comunica con el repositorio para acceder a la base de datos
+//Aqui se valida si por ejemplo, si el nombre del departamento existe, si el departamento existe antes de actualizar o eliminar, etc.
 import {
   Injectable,
   NotFoundException,

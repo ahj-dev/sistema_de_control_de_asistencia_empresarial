@@ -1,3 +1,4 @@
+//El controlador no tiene logica, solo delega al servicio. Es el encargado de recibir las peticiones HTTP, validar los datos y enviar la respuesta.
 import {
   Controller,
   Get,

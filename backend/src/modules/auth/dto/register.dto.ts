@@ -12,12 +12,12 @@ import { Rol } from '@prisma/client';
 export class RegisterDto {
   @IsEmail()
   @IsNotEmpty()
-  email: string;
+  email!: string;
 
   @IsString()
   @IsNotEmpty()
   @MinLength(6)
-  password: string;
+  password!: string;
 
   @IsEnum(Rol)
   @IsOptional()

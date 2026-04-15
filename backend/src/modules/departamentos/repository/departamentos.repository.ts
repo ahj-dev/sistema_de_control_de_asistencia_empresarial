@@ -1,4 +1,6 @@
-// Proporciona métodos para interactuar con la base de datos a través de Prisma, encapsulando las operaciones CRUD para el modelo Departamento
+// Proporciona métodos para interactuar con la base de datos a través de Prisma,
+// encapsulando las operaciones CRUD para el modelo Departamento. Es el unico que toca la base de datos usando el PrismaService
+//  el servicio no debe tocar la base de datos directamente.
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../../prisma/prisma.service';
 import { CreateDepartamentoDto } from '../dto/create-departamento.dto';

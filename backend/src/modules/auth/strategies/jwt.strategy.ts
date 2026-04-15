@@ -1,3 +1,5 @@
+// Esta estrategia se encarga de validar el token JWT que el cliente envía en cada petición protegida. 
+// Si el token es válido, extrae la información del usuario y la adjunta a req.user para que los controllers puedan usarla.
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';

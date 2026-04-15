@@ -1,3 +1,8 @@
+//Recibe las solicitudes relacionadas con los empleados.
+//--------------------------------------------------------------
+// El servicio de empleados es responsable de manejar la lógica de negocio relacionada con los empleados. 
+// Recibe las solicitudes del controlador, valida los datos y se comunica con el repositorio para realizar las operaciones necesarias.
+//--------------------------------------------------------------
 import {
   Injectable,
   NotFoundException,

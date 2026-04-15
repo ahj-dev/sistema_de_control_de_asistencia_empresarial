@@ -1,3 +1,4 @@
+// Este servicio maneja la lógica de autenticación: registro, login y perfil
 import {
   Injectable,
   UnauthorizedException,
