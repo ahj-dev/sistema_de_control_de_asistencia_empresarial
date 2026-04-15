@@ -1,3 +1,4 @@
+// Módulo raíz de la aplicación NestJS, Registra los módulos, controladores y servicios globales
 import { Module } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
 import { AppController } from './app.controller';

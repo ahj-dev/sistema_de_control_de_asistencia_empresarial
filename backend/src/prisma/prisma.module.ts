@@ -1,3 +1,4 @@
+// Módulo de Prisma para gestionar la conexión a la base de datos, se encarga de proporcionar el servicio de Prisma a toda la aplicación NestJS
 import { Global, Module } from '@nestjs/common';
 import { PrismaService } from './prisma.service';
 

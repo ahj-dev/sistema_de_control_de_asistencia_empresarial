@@ -1,4 +1,4 @@
-//recibe la peticion del usuario.
+//recibe la peticion del usuario, contiene la logica de negocio y se comunica con el repositorio para acceder a la base de datos
 import {
   Injectable,
   NotFoundException,

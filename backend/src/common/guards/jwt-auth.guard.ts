@@ -1,3 +1,6 @@
+// Este guard se encarga de proteger los endpoints que requieren autenticación mediante JWT.
+// Utiliza la estrategia de Passport que definimos en JwtStrategy para verificar el token y obtener el usuario.
+// Además, revisa si el endpoint tiene el decorador @Public() para permitir acceso sin autenticación a ciertos endpoints.
 import { Injectable, ExecutionContext } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { AuthGuard } from '@nestjs/passport';

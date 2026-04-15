@@ -35,6 +35,7 @@ model Departamento {
   @@map("departamentos")
 }
 
+// Datos personales del empleado
 model Empleado {
   id              String         @id @default(uuid())
   nombres         String
@@ -48,15 +49,18 @@ model Empleado {
   departamentoId String       @map("departamento_id")
   departamento   Departamento @relation("EmpleadoDepartamento", fields: [departamentoId], references: [id])
 
-  // Relación inversa con Usuario
+  // Relación inversa con Usuario, sirve para traer los datos de acceso (email, rol) partiendo desde los datos del empleado
   usuario Usuario?
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
+// Se crea un indice en la base de datos para que buscar empleados por departamento sea rapido
   @@index([departamentoId])
+// En el codigo se llama Empleado pero en la tabla fisica de la bd se llama empleados
   @@map("empleados")
 
+// Credenciales de acceso
 }
 model Usuario {
   id           String  @id @default(uuid())
@@ -66,7 +70,7 @@ model Usuario {
   activo       Boolean @default(true)
 
   // Relación opcional con Empleado
-  // Un Admin de TI puede tener usuario sin ser empleado
+  // Basicamente un Admin de TI puede tener usuario sin ser empleado
   empleadoId String?   @unique @map("empleado_id")
   empleado   Empleado? @relation(fields: [empleadoId], references: [id])
 

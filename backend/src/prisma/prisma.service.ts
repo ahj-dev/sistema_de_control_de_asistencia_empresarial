@@ -1,3 +1,4 @@
+// Servicio de Prisma para gestionar la conexión a la base de datos, se encarga de conectar y desconectar automáticamente al iniciar y apagar el servidor NestJS
 import { Injectable, OnModuleInit, OnModuleDestroy } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
 

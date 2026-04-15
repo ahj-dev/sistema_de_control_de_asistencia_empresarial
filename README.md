@@ -57,10 +57,10 @@ El **Sistema de Control de Asistencia Empresarial** es una aplicación web full-
 - ✅ Cálculo automático de horas trabajadas por jornada
 - ✅ Gestión de ausencias y justificaciones con soporte documental
 - ✅ Solicitud y aprobación de horas extra con flujo multinivel
-- ✅ Configuración de horarios laborales y días festivos por región
+- ✅ Configuración de horarios laborales y días festivos
 - ✅ Reportes por empleado, departamento y período (PDF y Excel)
 - ✅ Dashboard en tiempo real para RRHH
-- ✅ Notificaciones in-app y por email
+- ✅ Notificaciones in-app
 
 ---
 ## 📌 Sprints e Historias de Usuario
