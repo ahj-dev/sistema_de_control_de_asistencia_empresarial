@@ -21,6 +21,42 @@ enum EstadoEmpleado {
   VACACIONES
 }
 
+// ─────────────────────────────────────────────
+// ENUMS NUEVOS
+// ─────────────────────────────────────────────
+
+enum EstadoAsistencia {
+  PRESENTE
+  AUSENTE
+  TARDANZA
+  JUSTIFICADO
+  DIA_FESTIVO
+  FIN_DE_SEMANA
+}
+
+enum TipoJustificacion {
+  ENFERMEDAD
+  CITA_MEDICA
+  CALAMIDAD_DOMESTICA
+  PERMISO_PERSONAL
+  CAPACITACION
+  COMISION
+  OTRO
+}
+
+enum EstadoAprobacion {
+  PENDIENTE
+  APROBADO
+  RECHAZADO
+}
+
+enum TipoHoraExtra {
+  DIURNA
+  NOCTURNA
+  DOMINICAL_DIURNA
+  DOMINICAL_NOCTURNA
+}
+
 model Departamento {
   id          String  @id @default(uuid())
   nombre      String  @unique
@@ -48,6 +84,12 @@ model Empleado {
 
   departamentoId String       @map("departamento_id")
   departamento   Departamento @relation("EmpleadoDepartamento", fields: [departamentoId], references: [id])
+
+//Relacion 
+  horarioId String?          @map("horario_id")
+  horario   HorarioLaboral?  @relation(fields: [horarioId], references: [id])
+
+  registrosAsistencia RegistroAsistencia[]
 
   // Relación inversa con Usuario, sirve para traer los datos de acceso (email, rol) partiendo desde los datos del empleado
   usuario Usuario?
@@ -78,4 +120,78 @@ model Usuario {
   updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("usuarios")
+}
+
+// ─────────────────────────────────────────────
+// TABLA: HorarioLaboral
+// Define el turno de trabajo de un empleado.
+// diasLaborables es JSON porque es flexible:
+// { "lunes": true, "martes": true, ... }
+// ─────────────────────────────────────────────
+
+model HorarioLaboral {
+  id             String   @id @default(uuid())
+  nombre         String   @unique
+  horaEntrada    DateTime @map("hora_entrada") @db.Time
+  horaSalida     DateTime @map("hora_salida")  @db.Time
+  toleranciaMin  Int      @default(10) @map("tolerancia_min")
+  diasLaborables Json     @map("dias_laborables")
+  activo         Boolean  @default(true)
+
+  empleados Empleado[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("horarios_laborales")
+}
+
+// ─────────────────────────────────────────────
+// TABLA: DiaFestivo
+// recurrente = true → aplica cada año (Navidad)
+// recurrente = false → festivo único (puente)
+// ─────────────────────────────────────────────
+
+model DiaFestivo {
+  id         String   @id @default(uuid())
+  nombre     String
+  fecha      DateTime @db.Date
+  recurrente Boolean  @default(false)
+  paisRegion String   @default("CO") @map("pais_region")
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@unique([fecha, paisRegion])
+  @@map("dias_festivos")
+}
+
+// ─────────────────────────────────────────────
+// TABLA: RegistroAsistencia
+// Una fila por día por empleado.
+// El constraint UNIQUE (empleadoId + fecha)
+// garantiza que no haya duplicados.
+// ─────────────────────────────────────────────
+
+model RegistroAsistencia {
+  id              String           @id @default(uuid())
+  empleadoId      String           @map("empleado_id")
+  empleado        Empleado         @relation(fields: [empleadoId], references: [id])
+
+  fecha           DateTime         @db.Date
+  horaEntrada     DateTime?        @map("hora_entrada")
+  horaSalida      DateTime?        @map("hora_salida")
+
+  minutosTarde    Int              @default(0) @map("minutos_tarde")
+  horasTrabajadas Decimal?         @map("horas_trabajadas") @db.Decimal(5, 2)
+
+  estado          EstadoAsistencia @default(PRESENTE)
+  observacion     String?
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@unique([empleadoId, fecha])
+  @@index([fecha])
+  @@index([empleadoId, fecha])
+  @@map("registros_asistencia")
 }
