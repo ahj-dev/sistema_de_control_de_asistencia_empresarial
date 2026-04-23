@@ -28,7 +28,7 @@ async function bootstrap() {
       transform: true,
     }),
   );
-
+//Endpoint del servidor
   const port = process.env.PORT || 3001;
   await app.listen(port);
   console.log(`Servidor corriendo en http://localhost:${port}/api/v1`);

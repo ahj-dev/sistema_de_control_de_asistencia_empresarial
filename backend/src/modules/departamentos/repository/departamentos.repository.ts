@@ -21,7 +21,7 @@ export class DepartamentosRepository {
       },
     });
   }
-
+  
   findById(id: string) {
     return this.prisma.departamento.findUnique({
       where: { id },
