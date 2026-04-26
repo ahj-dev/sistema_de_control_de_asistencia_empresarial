@@ -132,8 +132,8 @@ model Usuario {
 model HorarioLaboral {
   id             String   @id @default(uuid())
   nombre         String   @unique
-  horaEntrada    DateTime @map("hora_entrada") @db.Time
-  horaSalida     DateTime @map("hora_salida")  @db.Time
+  horaEntrada    String   @map("hora_entrada")   
+  horaSalida     String   @map("hora_salida")     
   toleranciaMin  Int      @default(10) @map("tolerancia_min")
   diasLaborables Json     @map("dias_laborables")
   activo         Boolean  @default(true)
