@@ -1,4 +1,4 @@
-// Este script se puede ejecutar con `npx ts-node prisma/seed.ts` para cargar los días festivos de Colombia para el año 2026 en la base de datos
+// Este script se puede ejecutar con `npm run seed` para cargar los días festivos de Colombia para el año 2026 en la base de datos
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();

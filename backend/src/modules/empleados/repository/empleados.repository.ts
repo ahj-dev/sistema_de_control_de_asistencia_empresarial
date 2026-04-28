@@ -19,12 +19,15 @@ export class EmpleadosRepository {
     });
   }
 
-  findById(id: string) {
-    return this.prisma.empleado.findUnique({
-      where: { id },
-      include: { departamento: true },
-    });
-  }
+ findById(id: string) {
+  return this.prisma.empleado.findUnique({
+    where: { id },
+    include: {
+      departamento: true,
+      horario: true,
+    },
+  });
+}
 
   findByCedula(cedula: string) {
     return this.prisma.empleado.findUnique({
