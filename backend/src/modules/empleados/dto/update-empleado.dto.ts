@@ -1,3 +1,5 @@
+// UpdateEmpleadoDto es el DTO (Data Transfer Object) 
+// que se utiliza para validar y transferir los datos necesarios para actualizar un empleado existente en el sistema.
 import {
   IsString,
   IsOptional,
@@ -39,4 +41,8 @@ export class UpdateEmpleadoDto {
   @IsUUID()
   @IsOptional()
   departamentoId?: string;
+
+  @IsUUID()
+  @IsOptional()
+  horarioId?: string;
 }

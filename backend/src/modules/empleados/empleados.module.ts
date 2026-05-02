@@ -1,3 +1,6 @@
+// EmpleadosModule es el módulo principal para la gestión de empleados. 
+// Define el controlador, servicio y repositorio relacionados con empleados
+//  y también importa el módulo de departamentos para acceder a la información de los departamentos asociados a los empleados.
 import { Module } from '@nestjs/common';
 import { EmpleadosController } from './controller/empleados.controller';
 import { EmpleadosService } from './service/empleados.service';

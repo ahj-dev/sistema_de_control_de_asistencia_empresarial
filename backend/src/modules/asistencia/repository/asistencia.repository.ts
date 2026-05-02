@@ -1,3 +1,5 @@
+// este archivo se encarga de la interacción directa con la base de datos para el módulo de asistencia utilizando Prisma como ORM.
+// Aquí se definen los métodos para crear, actualizar y consultar los registros de asistencia de los empleados.
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../../prisma/prisma.service';
 

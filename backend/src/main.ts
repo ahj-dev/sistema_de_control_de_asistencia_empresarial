@@ -8,6 +8,8 @@ import 'dotenv/config';
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
+import { HttpExceptionFilter } from './common/filters/http-exception.filter';
+import { TransformInterceptor } from './common/interceptors/transform.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -19,15 +21,24 @@ async function bootstrap() {
     allowedHeaders: ['Content-Type', 'Authorization'],
   });
 
+  //Prefijo global para todos los endpoints (http://localhost:3001/api/v1/...)
   app.setGlobalPrefix('api/v1');
 
+  //Validacion global de DTOS — asegura que los datos entrantes sean correctos
   app.useGlobalPipes(
     new ValidationPipe({
-      whitelist: true,
-      forbidNonWhitelisted: true,
-      transform: true,
+      whitelist: true, //elimina campos no definidos en el DTO
+      forbidNonWhitelisted: true, //rechaza peticiones con campos extra
+      transform: true, //convierte strings a los tipos de datos definidos en el DTO
     }),
   );
+
+   // Filter global — formato uniforme para TODOS los errores
+  app.useGlobalFilters(new HttpExceptionFilter());
+
+  // Interceptor global — formato uniforme para TODAS las respuestas exitosas
+  app.useGlobalInterceptors(new TransformInterceptor());
+  
 //Endpoint del servidor
   const port = process.env.PORT || 3001;
   await app.listen(port);

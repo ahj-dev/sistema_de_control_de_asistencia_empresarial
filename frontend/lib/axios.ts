@@ -21,13 +21,23 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// Interceptor de respuesta:
-// Si el servidor devuelve 401, redirige al login automáticamente
+// Ahora todas las respuestas tienen { success, data, timestamp }
+// Extraemos solo el "data" para que los servicios reciban
+// directamente los datos sin tener que hacer response.data.data
 api.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    // Si la respuesta tiene el formato del TransformInterceptor
+    // devolvemos solo el campo "data"
+    if (response.data && response.data.success !== undefined) {
+      response.data = response.data.data;
+    }
+    return response;
+  },
   (error) => {
+    // Si la respuesta es un error 401 (Unauthorized), redirigimos al login
     if (error.response?.status === 401) {
       localStorage.removeItem('accessToken');
+      localStorage.removeItem('usuario');
       window.location.href = '/login';
     }
     return Promise.reject(error);

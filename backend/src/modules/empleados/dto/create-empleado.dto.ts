@@ -1,3 +1,5 @@
+// CreateEmpleadoDto es el DTO (Data Transfer Object) 
+// que se utiliza para validar y transferir los datos necesarios para crear un nuevo empleado en el sistema.
 import {
   IsString,
   IsNotEmpty,

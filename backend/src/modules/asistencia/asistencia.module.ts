@@ -1,3 +1,4 @@
+// AsistenciaModule es el módulo que se encarga de gestionar la asistencia de los empleados.
 import { Module } from '@nestjs/common';
 import { AsistenciaController } from './controller/asistencia.controller';
 import { AsistenciaService } from './service/asistencia.service';

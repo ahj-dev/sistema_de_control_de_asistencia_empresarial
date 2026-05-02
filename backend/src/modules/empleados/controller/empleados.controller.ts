@@ -1,3 +1,4 @@
+// EmpleadosController es el controlador que se encarga de gestionar las rutas relacionadas con los empleados.
 import {
   Controller,
   Get,

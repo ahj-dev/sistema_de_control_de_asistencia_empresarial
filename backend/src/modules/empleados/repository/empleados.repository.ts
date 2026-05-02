@@ -1,3 +1,4 @@
+/// Este archivo se encarga de la lógica de acceso a datos para los empleados, utilizando Prisma como ORM.
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../../prisma/prisma.service';
 import { CreateEmpleadoDto } from '../dto/create-empleado.dto';

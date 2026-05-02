@@ -1,3 +1,5 @@
+// este archivo define el DTO para filtrar asistencias
+// se pueden filtrar por empleadoId, fecha específica o mes completo
 import { IsUUID, IsOptional, IsDateString } from 'class-validator';
 
 export class FiltrarAsistenciaDto {

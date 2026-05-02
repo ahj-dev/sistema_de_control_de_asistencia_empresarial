@@ -1,3 +1,5 @@
+// este servicio se encarga de la lógica de negocio relacionada con la asistencia
+// registra entradas y salidas, calcula tardanzas y horas trabajadas, y lista registros
 import {
   Injectable,
   NotFoundException,

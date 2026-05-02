@@ -1,3 +1,6 @@
+// este archivo define el controlador para la entidad Asistencia
+// que maneja las rutas relacionadas con el registro de entradas y salidas de los empleados así como la consulta de asistencias. 
+// El controlador utiliza el servicio AsistenciaService para realizar las operaciones necesarias.
 import {
   Controller,
   Post,
