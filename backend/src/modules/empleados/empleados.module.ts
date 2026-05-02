@@ -8,5 +8,6 @@ import { DepartamentosModule } from '../departamentos/departamentos.module';
   imports: [DepartamentosModule], // para usar DepartamentosRepository
   controllers: [EmpleadosController],
   providers: [EmpleadosService, EmpleadosRepository],
+  exports: [EmpleadosRepository],
 })
 export class EmpleadosModule {}
