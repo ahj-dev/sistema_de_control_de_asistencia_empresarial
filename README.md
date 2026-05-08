@@ -73,10 +73,10 @@ El **Sistema de Control de Asistencia Empresarial** es una aplicación web full-
 | Sprint | Estado | HUs | Período |
 |---|---|---|---|
 | Sprint 1 — Infraestructura y entidades base | ✅ **Completado** | HU-01, HU-02, HU-03 | Mar 16 → Mar 29 |
-| Sprint 2 — Asistencia y horarios | 🔄 **En progreso** | HU-04, HU-05 | Mar 30 → Abr 10 |
-| Sprint 3 — Common Module y Frontend base | ⏳ Pendiente | HU-06, HU-07 | Abr 13 → Abr 17 |
-| Sprint 4 — Frontend asistencia e integración | ⏳ Pendiente | HU-08, HU-09 | Abr 20 → May 8 |
-| Sprint 5 — Reportes y cierre | ⏳ Pendiente | HU-10 | May 11 → May 22 |
+| Sprint 2 — Asistencia y horarios | ✅ **Completado** | HU-04, HU-05 | Mar 30 → Abr 10 |
+| Sprint 3 — Common Module y Frontend base | ✅ **Completado** | HU-06, HU-07 | Abr 13 → Abr 17 |
+| Sprint 4 — Frontend asistencia e integración | ✅ **Completado** | HU-08, HU-09 | Abr 20 → May 8 |
+| Sprint 5 — Reportes y cierre | 🔄 **En progreso** | HU-10 | May 11 → May 22 |
 
 ### Hitos Completados ✅
 
@@ -288,8 +288,8 @@ EstadoAsistencia → PRESENTE | AUSENTE | TARDANZA | JUSTIFICADO | DIA_FESTIVO |
 
 | # | Historia de Usuario | Tipo | Estado |
 |---|---|---|---|
-| HU-04 | Registro de entrada y salida — check-in / check-out | `backend` | 🔄 En progreso |
-| HU-05 | Configuración de horarios laborales y días festivos | `backend` | 🔄 En progreso |
+| HU-04 | Registro de entrada y salida — check-in / check-out | `backend` | ✅ Completado |
+| HU-05 | Configuración de horarios laborales y días festivos | `backend` | ✅ Completado |
 
 **Entregables:**
 - `POST /api/v1/asistencia/entrada` — registra horaEntrada, calcula si hay tardanza y cuántos minutos
@@ -307,8 +307,8 @@ EstadoAsistencia → PRESENTE | AUSENTE | TARDANZA | JUSTIFICADO | DIA_FESTIVO |
 
 | # | Historia de Usuario | Tipo | Estado |
 |---|---|---|---|
-| HU-06 | Common Module — Filters, Interceptors y Pipes globales | `cross-cutting` | ⏳ Pendiente |
-| HU-07 | Frontend base — Horarios, navegación y layout general | `frontend` | ⏳ Pendiente |
+| HU-06 | Common Module — Filters, Interceptors y Pipes globales | `cross-cutting` | ✅ Completado |
+| HU-07 | Frontend base — Horarios, navegación y layout general | `frontend` | ✅ Completado |
 
 **Entregables:**
 - `HttpExceptionFilter` global — respuestas de error uniformes `{ success: false, statusCode, message }`
@@ -326,8 +326,8 @@ EstadoAsistencia → PRESENTE | AUSENTE | TARDANZA | JUSTIFICADO | DIA_FESTIVO |
 
 | # | Historia de Usuario | Tipo | Estado |
 |---|---|---|---|
-| HU-08 | Frontend — Vista de fichaje (check-in / check-out) | `frontend` | ⏳ Pendiente |
-| HU-09 | Frontend — Listado de registros de asistencia | `frontend` | ⏳ Pendiente |
+| HU-08 | Frontend — Vista de fichaje (check-in / check-out) | `frontend` | ✅ Completado |
+| HU-09 | Frontend — Listado de registros de asistencia | `frontend` | ✅ Completado |
 
 **Entregables:**
 - Página de fichaje: botón de entrada/salida con feedback visual (tardanza, horas trabajadas)
@@ -368,7 +368,7 @@ EstadoAsistencia → PRESENTE | AUSENTE | TARDANZA | JUSTIFICADO | DIA_FESTIVO |
 ├─────────────────┬──────────────────────┬───────────────────────────────────┤
 │   Sprint 1      │      Sprint 2        │          Sprint 3                  │
 │  Mar 16 → 29    │   Mar 30 → Abr 10   │       Abr 13 → 17                  │
-│  ✅ Completado  │   🔄 En progreso     │       ⏳ Pendiente                 │
+│  ✅ Completado  │   ✅ Completado     │       ✅ Completado                │
 │                 │                      │                                    │
 │ • Docker+Prisma │ • Check-in/out       │ • Common Module                    │
 │ • Empleados     │ • Cálculo tardanza   │ • HttpExceptionFilter              │
@@ -384,7 +384,7 @@ EstadoAsistencia → PRESENTE | AUSENTE | TARDANZA | JUSTIFICADO | DIA_FESTIVO |
 ├──────────────────────────────────────┬─────────────────────────────────────┤
 │          Sprint 4                    │            Sprint 5                  │
 │         Abr 20 → May 8              │          May 11 → 22                 │
-│         ⏳ Pendiente                 │          ⏳ Pendiente                │
+│         ✅ Completado                │          🔄 En progreso             │
 │                                      │                                      │
 │ • Frontend fichaje                   │ • Reporte mensual por empleado       │
 │ • Vista check-in/check-out           │ • Resumen: presentes, tardanzas      │
