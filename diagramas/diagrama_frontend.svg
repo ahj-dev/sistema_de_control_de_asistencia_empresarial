@@ -1,0 +1,135 @@
+<svg width="100%" viewBox="0 0 680 660" role="img">
+  <title>Diagrama C4 - Nivel 3: Código Frontend Next.js</title>
+  <desc>Diagrama de componentes del frontend Next.js mostrando páginas, componentes, servicios, interfaces y la librería Axios.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <!-- Fondo blanco -->
+  <rect width="680" height="660" fill="white"/>
+
+  <!-- Título -->
+  <text font-family="Arial, sans-serif" font-size="15" font-weight="bold" x="340" y="26" text-anchor="middle" fill="#1a1a1a">Nivel 3 — Código Frontend (Next.js)</text>
+
+  <!-- Borde del frontend -->
+  <rect x="20" y="40" width="640" height="560" rx="14" fill="none" stroke="#bbb" stroke-width="1" stroke-dasharray="5 4"/>
+  <text font-family="Arial, sans-serif" font-size="11" x="32" y="56" fill="#888">«contenedor» Frontend — Next.js 14 con App Router</text>
+
+  <!-- === CAPA 1: Páginas === -->
+  <rect x="36" y="64" width="608" height="130" rx="10" fill="none" stroke="#ccc" stroke-width="0.8" stroke-dasharray="4 3"/>
+  <text font-family="Arial, sans-serif" font-size="11" x="48" y="80" fill="#888">«capa» app/ — Páginas (App Router)</text>
+
+  <rect x="48" y="88" width="110" height="96" rx="7" fill="#85B7EB" stroke="#185FA5" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="103" y="110" text-anchor="middle" fill="#042C53">Login</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="103" y="128" text-anchor="middle" fill="#0C447C">/login</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="103" y="145" text-anchor="middle" fill="#0C447C">POST /auth/login</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="103" y="162" text-anchor="middle" fill="#0C447C">guarda JWT</text>
+
+  <rect x="170" y="88" width="110" height="96" rx="7" fill="#85B7EB" stroke="#185FA5" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="225" y="110" text-anchor="middle" fill="#042C53">Dashboard</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="225" y="128" text-anchor="middle" fill="#0C447C">/dashboard</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="225" y="145" text-anchor="middle" fill="#0C447C">Sidebar + layout</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="225" y="162" text-anchor="middle" fill="#0C447C">Navegación</text>
+
+  <rect x="292" y="88" width="120" height="96" rx="7" fill="#85B7EB" stroke="#185FA5" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="352" y="110" text-anchor="middle" fill="#042C53">Empleados</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="352" y="128" text-anchor="middle" fill="#0C447C">/empleados</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="352" y="145" text-anchor="middle" fill="#0C447C">Lista · Crear</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="352" y="162" text-anchor="middle" fill="#0C447C">Editar · Eliminar</text>
+
+  <rect x="424" y="88" width="120" height="96" rx="7" fill="#85B7EB" stroke="#185FA5" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="484" y="110" text-anchor="middle" fill="#042C53">Asistencia</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="484" y="128" text-anchor="middle" fill="#0C447C">/asistencia</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="484" y="145" text-anchor="middle" fill="#0C447C">Check-in/out</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="484" y="162" text-anchor="middle" fill="#0C447C">Badges de estado</text>
+
+  <rect x="556" y="88" width="80" height="96" rx="7" fill="#85B7EB" stroke="#185FA5" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="596" y="110" text-anchor="middle" fill="#042C53">Reportes</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="596" y="128" text-anchor="middle" fill="#0C447C">/reportes</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="596" y="145" text-anchor="middle" fill="#0C447C">Mensual</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="596" y="162" text-anchor="middle" fill="#0C447C">empleado</text>
+
+  <line x1="340" y1="195" x2="340" y2="218" stroke="#185FA5" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+  <!-- === CAPA 2: Componentes === -->
+  <rect x="36" y="222" width="608" height="90" rx="10" fill="none" stroke="#ccc" stroke-width="0.8" stroke-dasharray="4 3"/>
+  <text font-family="Arial, sans-serif" font-size="11" x="48" y="238" fill="#888">«capa» components/ — Componentes reutilizables</text>
+
+  <rect x="48" y="248" width="110" height="54" rx="6" fill="#9FE1CB" stroke="#1D9E75" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="103" y="268" text-anchor="middle" fill="#04342C">Tabla / Lista</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="103" y="286" text-anchor="middle" fill="#0F6E56">Paginación · filtros</text>
+
+  <rect x="172" y="248" width="110" height="54" rx="6" fill="#9FE1CB" stroke="#1D9E75" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="227" y="268" text-anchor="middle" fill="#04342C">Formulario</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="227" y="286" text-anchor="middle" fill="#0F6E56">Validación cliente</text>
+
+  <rect x="296" y="248" width="110" height="54" rx="6" fill="#9FE1CB" stroke="#1D9E75" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="351" y="268" text-anchor="middle" fill="#04342C">Modal / Alerta</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="351" y="286" text-anchor="middle" fill="#0F6E56">Éxito · Error</text>
+
+  <rect x="420" y="248" width="110" height="54" rx="6" fill="#9FE1CB" stroke="#1D9E75" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="475" y="268" text-anchor="middle" fill="#04342C">Badge Estado</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="475" y="286" text-anchor="middle" fill="#0F6E56">PRESENTE · TARDANZA</text>
+
+  <rect x="544" y="248" width="90" height="54" rx="6" fill="#9FE1CB" stroke="#1D9E75" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="589" y="268" text-anchor="middle" fill="#04342C">Sidebar</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="589" y="286" text-anchor="middle" fill="#0F6E56">Navegación</text>
+
+  <line x1="340" y1="313" x2="340" y2="338" stroke="#1D9E75" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+  <!-- === CAPA 3: Services === -->
+  <rect x="36" y="342" width="608" height="100" rx="10" fill="none" stroke="#ccc" stroke-width="0.8" stroke-dasharray="4 3"/>
+  <text font-family="Arial, sans-serif" font-size="11" x="48" y="358" fill="#888">«capa» services/ — Acceso a la API Backend</text>
+
+  <rect x="48" y="365" width="110" height="66" rx="6" fill="#F0997B" stroke="#993C1D" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="103" y="385" text-anchor="middle" fill="#4A1B0C">authService</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="103" y="403" text-anchor="middle" fill="#712B13">login()</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="103" y="419" text-anchor="middle" fill="#712B13">logout()</text>
+
+  <rect x="172" y="365" width="110" height="66" rx="6" fill="#F0997B" stroke="#993C1D" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="227" y="385" text-anchor="middle" fill="#4A1B0C">empleadosService</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="227" y="403" text-anchor="middle" fill="#712B13">getAll() create()</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="227" y="419" text-anchor="middle" fill="#712B13">update() delete()</text>
+
+  <rect x="296" y="365" width="110" height="66" rx="6" fill="#F0997B" stroke="#993C1D" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="351" y="385" text-anchor="middle" fill="#4A1B0C">asistenciaService</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="351" y="403" text-anchor="middle" fill="#712B13">checkIn()</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="351" y="419" text-anchor="middle" fill="#712B13">checkOut()</text>
+
+  <rect x="420" y="365" width="110" height="66" rx="6" fill="#F0997B" stroke="#993C1D" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="475" y="385" text-anchor="middle" fill="#4A1B0C">reportesService</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="475" y="403" text-anchor="middle" fill="#712B13">getMensual()</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="475" y="419" text-anchor="middle" fill="#712B13">id · mes</text>
+
+  <rect x="544" y="365" width="90" height="66" rx="6" fill="#F0997B" stroke="#993C1D" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="589" y="385" text-anchor="middle" fill="#4A1B0C">horariosService</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="589" y="403" text-anchor="middle" fill="#712B13">CRUD</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="589" y="419" text-anchor="middle" fill="#712B13">turnos</text>
+
+  <line x1="340" y1="432" x2="340" y2="457" stroke="#993C1D" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+  <!-- === CAPA 4: lib + interfaces === -->
+  <rect x="36" y="460" width="608" height="100" rx="10" fill="none" stroke="#ccc" stroke-width="0.8" stroke-dasharray="4 3"/>
+  <text font-family="Arial, sans-serif" font-size="11" x="48" y="476" fill="#888">«capa» lib/ + interfaces/ — Configuración y tipos</text>
+
+  <rect x="48" y="484" width="180" height="66" rx="6" fill="#FAC775" stroke="#BA7517" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="138" y="504" text-anchor="middle" fill="#412402">Axios (lib/axios.ts)</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="138" y="522" text-anchor="middle" fill="#633806">baseURL: :3001/api/v1</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="138" y="538" text-anchor="middle" fill="#633806">Interceptor: añade JWT</text>
+
+  <rect x="248" y="484" width="180" height="66" rx="6" fill="#FAC775" stroke="#BA7517" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="338" y="504" text-anchor="middle" fill="#412402">Interfaces TypeScript</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="338" y="522" text-anchor="middle" fill="#633806">Empleado · Departamento</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="338" y="538" text-anchor="middle" fill="#633806">Asistencia · Reporte</text>
+
+  <rect x="448" y="484" width="184" height="66" rx="6" fill="#FAC775" stroke="#BA7517" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="540" y="504" text-anchor="middle" fill="#412402">Tailwind CSS</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="540" y="522" text-anchor="middle" fill="#633806">Diseño responsivo</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="540" y="538" text-anchor="middle" fill="#633806">desktop + tablet</text>
+
+  <!-- Notas -->
+  <text font-family="Arial, sans-serif" font-size="11" x="340" y="590" text-anchor="middle" fill="#555">Páginas → Componentes → Services → Axios → Backend API (NestJS :3001)</text>
+  <text font-family="Arial, sans-serif" font-size="11" x="340" y="608" text-anchor="middle" fill="#666">C4 Model — Nivel 3: Código Frontend · CORHUILA 2026A</text>
+</svg>

@@ -1,0 +1,136 @@
+<svg width="100%" viewBox="0 0 680 720" role="img">
+  <title>Diagrama C4 - Nivel 3: Código Backend NestJS</title>
+  <desc>Diagrama de componentes del backend NestJS mostrando la arquitectura en capas.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <!-- Fondo blanco -->
+  <rect width="680" height="720" fill="white"/>
+
+  <!-- Título -->
+  <text font-family="Arial, sans-serif" font-size="15" font-weight="bold" x="340" y="26" text-anchor="middle" fill="#1a1a1a">Nivel 3 — Código Backend (NestJS)</text>
+
+  <!-- Borde del backend -->
+  <rect x="20" y="40" width="640" height="630" rx="14" fill="none" stroke="#bbb" stroke-width="1" stroke-dasharray="5 4"/>
+  <text font-family="Arial, sans-serif" font-size="11" x="32" y="56" fill="#888">«contenedor» Backend API — NestJS</text>
+
+  <!-- === COMMON MODULE === -->
+  <rect x="36" y="64" width="608" height="80" rx="10" fill="none" stroke="#ccc" stroke-width="0.8" stroke-dasharray="4 3"/>
+  <text font-family="Arial, sans-serif" font-size="11" x="48" y="78" fill="#888">«módulo transversal» Common Module</text>
+
+  <rect x="48" y="84" width="130" height="50" rx="6" fill="#D3D1C7" stroke="#5F5E5A" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="113" y="106" text-anchor="middle" fill="#2C2C2A">JwtAuthGuard</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="113" y="122" text-anchor="middle" fill="#444441">Guard global</text>
+
+  <rect x="196" y="84" width="150" height="50" rx="6" fill="#D3D1C7" stroke="#5F5E5A" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="271" y="106" text-anchor="middle" fill="#2C2C2A">HttpExceptionFilter</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="271" y="122" text-anchor="middle" fill="#444441">Errores uniformes</text>
+
+  <rect x="364" y="84" width="150" height="50" rx="6" fill="#D3D1C7" stroke="#5F5E5A" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="439" y="106" text-anchor="middle" fill="#2C2C2A">TransformInterceptor</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="439" y="122" text-anchor="middle" fill="#444441">Respuestas uniformes</text>
+
+  <rect x="532" y="84" width="110" height="50" rx="6" fill="#D3D1C7" stroke="#5F5E5A" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="587" y="106" text-anchor="middle" fill="#2C2C2A">ValidationPipe</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="587" y="122" text-anchor="middle" fill="#444441">whitelist · transform</text>
+
+  <!-- Subtítulo flujo -->
+  <text font-family="Arial, sans-serif" font-size="11" x="340" y="166" text-anchor="middle" fill="#666">— flujo de una petición HTTP →</text>
+
+  <!-- HTTP Request -->
+  <rect x="36" y="178" width="120" height="56" rx="8" fill="#85B7EB" stroke="#185FA5" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="96" y="200" text-anchor="middle" fill="#042C53">HTTP Request</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="96" y="218" text-anchor="middle" fill="#0C447C">Cliente / Frontend</text>
+  <line x1="156" y1="206" x2="178" y2="206" stroke="#185FA5" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+  <!-- Controller -->
+  <rect x="178" y="178" width="140" height="56" rx="8" fill="#AFA9EC" stroke="#534AB7" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="248" y="196" text-anchor="middle" fill="#26215C">Controller</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="248" y="213" text-anchor="middle" fill="#3C3489">@Get @Post @Patch</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="248" y="228" text-anchor="middle" fill="#3C3489">@Delete · rutas</text>
+  <line x1="318" y1="206" x2="338" y2="206" stroke="#534AB7" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+  <!-- DTO -->
+  <rect x="178" y="256" width="140" height="50" rx="6" fill="#F0997B" stroke="#993C1D" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="248" y="275" text-anchor="middle" fill="#4A1B0C">DTO</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="248" y="293" text-anchor="middle" fill="#712B13">class-validator · input</text>
+  <line x1="248" y1="234" x2="248" y2="254" stroke="#993C1D" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text font-family="Arial, sans-serif" font-size="10" x="266" y="249" fill="#666">valida</text>
+
+  <!-- Service -->
+  <rect x="338" y="178" width="140" height="56" rx="8" fill="#AFA9EC" stroke="#534AB7" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="408" y="196" text-anchor="middle" fill="#26215C">Service</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="408" y="213" text-anchor="middle" fill="#3C3489">@Injectable()</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="408" y="228" text-anchor="middle" fill="#3C3489">Lógica de negocio</text>
+  <line x1="478" y1="206" x2="498" y2="206" stroke="#534AB7" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+  <!-- Repository -->
+  <rect x="498" y="178" width="150" height="56" rx="8" fill="#9FE1CB" stroke="#1D9E75" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="573" y="196" text-anchor="middle" fill="#04342C">Repository</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="573" y="213" text-anchor="middle" fill="#0F6E56">@Injectable()</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="573" y="228" text-anchor="middle" fill="#0F6E56">Acceso a datos</text>
+  <line x1="573" y1="234" x2="573" y2="264" stroke="#0F6E56" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+  <!-- PrismaService -->
+  <rect x="498" y="264" width="150" height="50" rx="6" fill="#9FE1CB" stroke="#1D9E75" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="573" y="283" text-anchor="middle" fill="#04342C">PrismaService</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="573" y="301" text-anchor="middle" fill="#0F6E56">@Global() · ORM</text>
+
+  <!-- Módulos del dominio -->
+  <text font-family="Arial, sans-serif" font-size="13" font-weight="bold" x="340" y="344" text-anchor="middle" fill="#333">Módulos del dominio</text>
+
+  <!-- AuthModule -->
+  <rect x="36" y="360" width="120" height="70" rx="8" fill="#F0997B" stroke="#993C1D" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="96" y="381" text-anchor="middle" fill="#4A1B0C">AuthModule</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="96" y="399" text-anchor="middle" fill="#712B13">login · logout</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="96" y="415" text-anchor="middle" fill="#712B13">@Public()</text>
+
+  <!-- EmpleadosModule -->
+  <rect x="170" y="360" width="120" height="70" rx="8" fill="#85B7EB" stroke="#185FA5" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="230" y="381" text-anchor="middle" fill="#042C53">EmpleadosModule</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="230" y="399" text-anchor="middle" fill="#0C447C">CRUD completo</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="230" y="415" text-anchor="middle" fill="#0C447C">→ Departamento</text>
+
+  <!-- DepartamentosModule -->
+  <rect x="304" y="360" width="130" height="70" rx="8" fill="#85B7EB" stroke="#185FA5" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="369" y="381" text-anchor="middle" fill="#042C53">DeptoModule</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="369" y="399" text-anchor="middle" fill="#0C447C">CRUD completo</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="369" y="415" text-anchor="middle" fill="#0C447C">conteo empleados</text>
+
+  <!-- HorariosModule -->
+  <rect x="448" y="360" width="110" height="70" rx="8" fill="#85B7EB" stroke="#185FA5" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="503" y="381" text-anchor="middle" fill="#042C53">HorariosModule</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="503" y="399" text-anchor="middle" fill="#0C447C">Turnos laborales</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="503" y="415" text-anchor="middle" fill="#0C447C">Días festivos</text>
+
+  <!-- AsistenciaModule -->
+  <rect x="36" y="460" width="140" height="90" rx="8" fill="#AFA9EC" stroke="#534AB7" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="106" y="480" text-anchor="middle" fill="#26215C">AsistenciaModule</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="106" y="498" text-anchor="middle" fill="#3C3489">POST /entrada</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="106" y="514" text-anchor="middle" fill="#3C3489">POST /salida</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="106" y="530" text-anchor="middle" fill="#3C3489">Calcula tardanza</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="106" y="546" text-anchor="middle" fill="#3C3489">Horas trabajadas</text>
+
+  <!-- ReportesModule -->
+  <rect x="196" y="460" width="140" height="90" rx="8" fill="#AFA9EC" stroke="#534AB7" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="266" y="480" text-anchor="middle" fill="#26215C">ReportesModule</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="266" y="498" text-anchor="middle" fill="#3C3489">GET /empleado/:id</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="266" y="514" text-anchor="middle" fill="#3C3489">?mes=YYYY-MM</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="266" y="530" text-anchor="middle" fill="#3C3489">Resumen mensual</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="266" y="546" text-anchor="middle" fill="#3C3489">Detalle día a día</text>
+
+  <!-- Enums -->
+  <rect x="356" y="460" width="210" height="90" rx="8" fill="#FAC775" stroke="#BA7517" stroke-width="1"/>
+  <text font-family="Arial, sans-serif" font-size="12" font-weight="bold" x="461" y="480" text-anchor="middle" fill="#412402">Enums Prisma</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="461" y="498" text-anchor="middle" fill="#633806">Rol: EMPLEADO | RRHH</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="461" y="514" text-anchor="middle" fill="#633806">JEFE_DEPTO | ADMIN</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="461" y="530" text-anchor="middle" fill="#633806">EstadoAsistencia:</text>
+  <text font-family="Arial, sans-serif" font-size="10" x="461" y="546" text-anchor="middle" fill="#633806">PRESENTE | TARDANZA…</text>
+
+  <!-- Notas finales -->
+  <text font-family="Arial, sans-serif" font-size="11" x="340" y="598" text-anchor="middle" fill="#555">Cada módulo sigue: Controller → Service → Repository → PrismaService</text>
+  <text font-family="Arial, sans-serif" font-size="11" x="340" y="618" text-anchor="middle" fill="#666">C4 Model — Nivel 3: Código Backend · CORHUILA 2026A</text>
+</svg>
