@@ -9,6 +9,7 @@ import { EmpleadosModule } from './modules/empleados/empleados.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { HorariosModule } from './modules/horarios/horarios.module';
 import { AsistenciaModule } from './modules/asistencia/asistencia.module';
+import { ReportesModule } from './modules/reportes/reportes.module';
 import { JwtAuthGuard } from './common/guards/jwt-auth.guard';
 
 @Module({
@@ -19,6 +20,7 @@ import { JwtAuthGuard } from './common/guards/jwt-auth.guard';
     AuthModule,
     HorariosModule,
     AsistenciaModule,
+    ReportesModule,
   ],
   controllers: [AppController],
   providers: [

@@ -15,6 +15,7 @@ const menuItems = [
   { label: 'Empleados',     href: '/dashboard/empleados',       icon: '👥' },
   { label: 'Horarios',      href: '/dashboard/horarios',        icon: '🕐' },
   { label: 'Asistencia',    href: '/dashboard/asistencia',      icon: '📋' },
+  { label: 'Reportes',      href: '/dashboard/reportes',       icon: '📊' },
 ];
 
 export default function DashboardLayout({
